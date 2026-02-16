@@ -1,0 +1,244 @@
+@import 'tailwindcss';
+
+@utility span-full {
+  grid-area: 1 / 1 / -1 / -1;
+}
+@utility content-visibility-auto {
+  content-visibility: auto;
+}
+@utility scrollbar-hidden {
+  scrollbar-width: none;
+}
+@utility outline-visible {
+  outline: var(--spacing-0.5) solid var(--color-gray-950);
+  outline-offset: var(--spacing-px);
+}
+@utility text-trim {
+  text-box: trim-both cap alphabetic;
+}
+@utility text-trim-start {
+  text-box: trim-start cap alphabetic;
+}
+@utility text-trim-end {
+  text-box: trim-end cap alphabetic;
+}
+@utility grid-cols-inner {
+  grid-template-columns: var(--grid-cols-inner);
+}
+@utility grid-cols-outer {
+  grid-template-columns: var(--grid-cols-outer);
+}
+@utility grid-cols-entire {
+  grid-template-columns: var(--grid-cols-entire);
+}
+
+@theme {
+  --color-*: initial;
+  --color-08090a: #08090a;
+  --color-0b0b0b: #0b0b0b;
+  --color-0d0e0f: #0d0e0f;
+  --color-121213: #121213;
+  --color-1b1b1c: #1b1b1c;
+  --color-29292a: #29292a;
+  --color-5d5d5d: #5d5d5d;
+  --color-82f1f7: #82f1f7;
+  --color-838484: #838484;
+  --color-efefef: #efefef;
+  --font-*: initial;
+  --font-main: 'Red Hat Display', sans-serif;
+  --font-code: 'Hack', monospace;
+  --text-*: initial;
+  --text-h1: var(--base-text-h1);
+  --text-h1--line-height: var(--base-text-h1--line-height);
+  --text-h1--letter-spacing: var(--base-text-h1--letter-spacing);
+  --text-h1--font-weight: var(--base-text-h1--font-weight);
+  --text-h2: var(--base-text-h2);
+  --text-h2--line-height: var(--base-text-h2--line-height);
+  --text-h2--letter-spacing: var(--base-text-h2--letter-spacing);
+  --text-h2--font-weight: var(--base-text-h2--font-weight);
+  --text-h3: var(--base-text-h3);
+  --text-h3--line-height: var(--base-text-h3--line-height);
+  --text-h3--letter-spacing: var(--base-text-h3--letter-spacing);
+  --text-h3--font-weight: var(--base-text-h3--font-weight);
+  --text-h4: var(--base-text-h4);
+  --text-h4--line-height: var(--base-text-h4--line-height);
+  --text-h4--letter-spacing: var(--base-text-h4--letter-spacing);
+  --text-h4--font-weight: var(--base-text-h4--font-weight);
+  --text-main: var(--base-text-main);
+  --text-main--line-height: var(--base-text-main--line-height);
+  --text-main--letter-spacing: var(--base-text-main--letter-spacing);
+  --text-main--font-weight: var(--base-text-main--font-weight);
+  --text-btn: var(--base-text-btn);
+  --text-btn--line-height: var(--base-text-btn--line-height);
+  --text-btn--letter-spacing: var(--base-text-btn--letter-spacing);
+  --text-btn--font-weight: var(--base-text-btn--font-weight);
+  --text-add1: var(--base-text-add1);
+  --text-add1--line-height: var(--base-text-add1--line-height);
+  --text-add1--letter-spacing: var(--base-text-add1--letter-spacing);
+  --text-add1--font-weight: var(--base-text-add1--font-weight);
+  --text-add2: var(--base-text-add2);
+  --text-add2--line-height: var(--base-text-add2--line-height);
+  --text-add2--letter-spacing: var(--base-text-add2--letter-spacing);
+  --text-add2--font-weight: var(--base-text-add2--font-weight);
+  --text-term: var(--base-text-term);
+  --text-term--line-height: var(--base-text-term--line-height);
+  --text-term--letter-spacing: var(--base-text-term--letter-spacing);
+  --text-term--font-weight: var(--base-text-term--font-weight);
+  --text-link1: var(--base-text-link1);
+  --text-link1--line-height: var(--base-text-link1--line-height);
+  --text-link1--letter-spacing: var(--base-text-link1--letter-spacing);
+  --text-link1--font-weight: var(--base-text-link1--font-weight);
+  --text-link2: var(--base-text-link2);
+  --text-link2--line-height: var(--base-text-link2--line-height);
+  --text-link2--letter-spacing: var(--base-text-link2--letter-spacing);
+  --text-link2--font-weight: var(--base-text-link2--font-weight);
+  --default-transition-duration: 350ms;
+  --default-transition-timing-function: cubic-bezier(0, 0.6, 0.4, 1);
+}
+
+@layer utilities {
+  :root {
+    @apply min-h-svh overflow-x-clip overflow-y-scroll scroll-smooth bg-08090a font-main text-main text-pretty wrap-break-word text-efefef antialiased scheme-dark transition-[scrollbar-color] [font-size-adjust:from-font] [interpolate-size:allow-keywords] [scrollbar-color:var(--color-29292a)_transparent] [scrollbar-gutter:stable];
+    &:has(:target) {
+      @apply scroll-smooth;
+    }
+  }
+  :root {
+    /* fs - font-size, fw - font-weight, lh - line-height, ls - letter-spacing. */
+    --text-base-fs: 16;
+    @apply text-[calc(var(--text-base-fs)*1px)];
+    --base-text-h1: calc(64 / var(--text-base-fs) * 1rem);
+    --base-text-h1--line-height: 90%;
+    --base-text-h1--letter-spacing: calc(-2 * (1em / 100));
+    --base-text-h1--font-weight: 500;
+    --base-text-h2: calc(48 / var(--text-base-fs) * 1rem);
+    --base-text-h2--line-height: 100%;
+    --base-text-h2--letter-spacing: calc(-2 * (1em / 100));
+    --base-text-h2--font-weight: 500;
+    --base-text-h3: calc(24 / var(--text-base-fs) * 1rem);
+    --base-text-h3--line-height: 100%;
+    --base-text-h3--letter-spacing: calc(-2 * (1em / 100));
+    --base-text-h3--font-weight: 500;
+    --base-text-h4: calc(16 / var(--text-base-fs) * 1rem);
+    --base-text-h4--line-height: 125%;
+    --base-text-h4--letter-spacing: calc(-2 * (1em / 100));
+    --base-text-h4--font-weight: 500;
+    --base-text-main: calc(16 / var(--text-base-fs) * 1rem);
+    --base-text-main--line-height: 120%;
+    --base-text-main--letter-spacing: calc(-2 * (1em / 100));
+    --base-text-main--font-weight: 400;
+    --base-text-btn: calc(16 / var(--text-base-fs) * 1rem);
+    --base-text-btn--line-height: 100%;
+    --base-text-btn--letter-spacing: calc(-2 * (1em / 100));
+    --base-text-btn--font-weight: 500;
+    --base-text-add1: calc(14 / var(--text-base-fs) * 1rem);
+    --base-text-add1--line-height: 125%;
+    --base-text-add1--letter-spacing: calc(-2 * (1em / 100));
+    --base-text-add1--font-weight: 400;
+    --base-text-add2: calc(12 / var(--text-base-fs) * 1rem);
+    --base-text-add2--line-height: 100%;
+    --base-text-add2--letter-spacing: calc(-2 * (1em / 100));
+    --base-text-add2--font-weight: 400;
+    --base-text-term: calc(16 / var(--text-base-fs) * 1rem);
+    --base-text-term--line-height: 125%;
+    --base-text-term--letter-spacing: calc(-4 * (1em / 100));
+    --base-text-term--font-weight: 400;
+    --base-text-link1: calc(24 / var(--text-base-fs) * 1rem);
+    --base-text-link1--line-height: 100%;
+    --base-text-link1--letter-spacing: calc(-2 * (1em / 100));
+    --base-text-link1--font-weight: 400;
+    --base-text-link2: calc(14 / var(--text-base-fs) * 1rem);
+    --base-text-link2--line-height: 100%;
+    --base-text-link2--letter-spacing: calc(-2 * (1em / 100));
+    --base-text-link2--font-weight: 400;
+    @variant max-xl {
+      --base-text-h1: calc(48 / var(--text-base-fs) * 1rem);
+      --base-text-h1--line-height: 100%;
+      --base-text-h2: calc(40 / var(--text-base-fs) * 1rem);
+      @variant max-sm {
+        --base-text-h1: calc(40 / var(--text-base-fs) * 1rem);
+        --base-text-h2: calc(32 / var(--text-base-fs) * 1rem);
+        --base-text-term: calc(14 / var(--text-base-fs) * 1rem);
+        --base-text-link2: calc(20 / var(--text-base-fs) * 1rem);
+      }
+    }
+  }
+  :root {
+    --outer-max-width: --spacing(308.5);
+    --outer-gap-x: --spacing(4);
+    --inner-gap-x: --spacing(2);
+    --track-number: 8;
+    @variant md {
+      --outer-gap-x: --spacing(8);
+      --inner-gap-x: --spacing(4);
+      @variant lg {
+        --track-number: 12;
+      }
+    }
+    /* prettier-ignore */
+    --track-base-width: calc((min(var(--outer-max-width), 100dvw - var(--page-scrollbar-width, 0) * 1px) - var(--outer-gap-x) * 2 - var(--inner-gap-x) * (var(--track-number) - 1)) / var(--track-number));
+    /* prettier-ignore */
+    --grid-cols-inner: [inner-start] repeat(calc(var(--track-number) - 1), [track-start] var(--track-base-width) [track-end] var(--inner-gap-x)) [track-start] var(--track-base-width) [track-end inner-end];
+    --grid-cols-outer: [outer-start] var(--outer-gap-x) var(--grid-cols-inner) var(--outer-gap-x) [outer-end];
+    --grid-cols-entire: [entire-start] 1fr var(--grid-cols-outer) 1fr [entire-end];
+    --track-1: calc((var(--track-base-width) + var(--inner-gap-x)) * (1 - 1) + var(--track-base-width));
+    --track-2: calc((var(--track-base-width) + var(--inner-gap-x)) * (2 - 1) + var(--track-base-width));
+    --track-3: calc((var(--track-base-width) + var(--inner-gap-x)) * (3 - 1) + var(--track-base-width));
+    --track-4: calc((var(--track-base-width) + var(--inner-gap-x)) * (4 - 1) + var(--track-base-width));
+    --track-5: calc((var(--track-base-width) + var(--inner-gap-x)) * (5 - 1) + var(--track-base-width));
+    --track-6: calc((var(--track-base-width) + var(--inner-gap-x)) * (6 - 1) + var(--track-base-width));
+    --track-7: calc((var(--track-base-width) + var(--inner-gap-x)) * (7 - 1) + var(--track-base-width));
+    --track-8: calc((var(--track-base-width) + var(--inner-gap-x)) * (8 - 1) + var(--track-base-width));
+    --track-9: calc((var(--track-base-width) + var(--inner-gap-x)) * (9 - 1) + var(--track-base-width));
+    --track-10: calc((var(--track-base-width) + var(--inner-gap-x)) * (10 - 1) + var(--track-base-width));
+    --track-11: calc((var(--track-base-width) + var(--inner-gap-x)) * (11 - 1) + var(--track-base-width));
+    --track-12: calc((var(--track-base-width) + var(--inner-gap-x)) * (12 - 1) + var(--track-base-width));
+  }
+  :root {
+    --header-height: --spacing(14);
+  }
+  :root {
+    --code-foreground: var(--color-efefef);
+    --code-token-constant: oklch(from var(--color-82f1f7) l c 90);
+    --code-token-string: oklch(from var(--color-82f1f7) l c 120);
+    --code-token-comment: var(--color-5d5d5d);
+    --code-token-keyword: oklch(from var(--color-82f1f7) l c 240);
+    --code-token-parameter: oklch(from var(--color-82f1f7) l c 90);
+    --code-token-function: oklch(from var(--color-82f1f7) l c 270);
+    --code-token-string-expression: oklch(from var(--color-82f1f7) l c 120);
+    --code-token-punctuation: var(--color-efefef);
+    --code-token-link: var(--color-efefef);
+    --code-ansi-black: var(--color-08090a);
+    --code-ansi-red: oklch(from var(--color-82f1f7) l c 0);
+    --code-ansi-green: oklch(from var(--color-82f1f7) l c 120);
+    --code-ansi-yellow: oklch(from var(--color-82f1f7) l c 90);
+    --code-ansi-blue: oklch(from var(--color-82f1f7) l c 240);
+    --code-ansi-magenta: oklch(from var(--color-82f1f7) l c 300);
+    --code-ansi-cyan: var(--color-82f1f7);
+    --code-ansi-white: var(--color-efefef);
+  }
+  :where(:target) {
+    /* We cannot use the "--header-height" variable here because its height changes when scrolling from the top of the page. */
+    @apply scroll-mt-12;
+  }
+  &.scroll-lock {
+    @apply overflow-y-clip;
+  }
+  .highlight-command-line-tokens {
+    &::highlight(--command-line-token-command) {
+      color: var(--code-ansi-cyan);
+    }
+    &::highlight(--command-line-token-argument) {
+      color: var(--code-ansi-yellow);
+    }
+    &::highlight(--command-line-token-flag) {
+      color: var(--code-ansi-magenta);
+    }
+    &::highlight(--command-line-token-operator) {
+      color: var(--code-ansi-blue);
+    }
+    &::highlight(--command-line-token-string) {
+      color: var(--code-ansi-green);
+    }
+  }
+}

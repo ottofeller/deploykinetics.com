@@ -1,0 +1,65 @@
+use crate::basic::worker::worker;
+use http::{Request, Response, StatusCode};
+use kinetics::macros::endpoint;
+use kinetics::tools::config::Config as KineticsConfig;
+use kinetics::tools::queue::Client as QueueClient;
+use serde_json::json;
+use std::collections::HashMap;
+// As an example use a general-purpose type-erased error from tower.
+// Custom errors would work as well.
+use tower::BoxError;
+
+/// Send a message to the queue
+///
+/// Test locally with the following command:
+/// kinetics invoke QueueQueue --with-queue
+#[endpoint(url_path = "/queue")]
+pub async fn queue(
+    _event: Request<Vec<u8>>,
+    _secrets: &HashMap<String, String>,
+    _config: &KineticsConfig,
+) -> Result<Response<String>, BoxError> {
+    let client = QueueClient::from_worker(worker).await?;
+    client.send("Test message").await?;
+
+    let resp = Response::builder()
+        .status(StatusCode::OK)
+        .header("content-type", "text/html")
+        .body(json!({"success": true}).to_string())
+        .map_err(Box::new)?;
+    Ok(resp)
+}
+
+/// A queue worker
+///
+/// Always returns the first record as failed to process. It will then be retried.
+///
+/// Test locally with the following command:
+/// kinetics invoke BasicWorkerWorker --payload '{"name": "John"}'
+#[worker(fifo = true)]
+pub async fn worker(
+    records: Vec<QueueRecord>,
+    _secrets: &HashMap<String, String>,
+    _config: &KineticsConfig,
+) -> Result<QueueRetries, BoxError> {
+    let mut retries = QueueRetries::new();
+
+    let record = match records.first() {
+        Some(record) => record,
+        None => {
+            return Err(Box::new(std::io::Error::new(
+                std::io::ErrorKind::NotFound,
+                "No records found",
+            )))
+        }
+    };
+
+    let body = serde_json::Value::from(record.body.clone().unwrap());
+    println!("Got body: {body:?}");
+
+    // Optionally return the first record from the input batch in retries, just for example
+    // Doing so will force the worker to process the item again on the next iteration
+    retries.add(&record.message_id.clone().unwrap_or_default());
+
+    Ok(retries)
+}

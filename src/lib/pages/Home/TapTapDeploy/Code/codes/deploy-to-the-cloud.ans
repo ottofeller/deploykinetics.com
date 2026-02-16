@@ -1,0 +1,11 @@
+[33m    Building[0m examples
+[33m   Uploading[0m DatabaseDatabase
+[33m   Uploading[0m BasicWorkerWorker
+[33m   Uploading[0m BasicCronCron
+[33m   Uploading[0m BasicEndpointEndpoint
+[33m   Uploading[0m QueueQueue
+[33m   Uploading[0m UrlsPath
+[33m   Uploading[0m EnvironmentEnvironment
+[33m   Uploading[0m SecretsSecrets
+[33mProvisioning[0m examples
+[33m    Finished[0m Deployed in [36m17.27s[0m

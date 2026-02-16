@@ -1,0 +1,4 @@
+[33m   Compiling[0m [36mkinetics __VERSION__[0m
+[33m    Finished[0m `release` profile [optimized] target(s) in [36m23s[0m
+[33m  Installing[0m [36m~/.cargo/bin/kinetics[0m
+[33m   Installed[0m package [36m`kinetics __VERSION__`[0m (executable `kinetics`)
