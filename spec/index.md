@@ -81,7 +81,8 @@ Very likely just one page is enough to fit everything about kinetics in its curr
 
 - Hero
 
-  ![](./hero.png)
+<img width="2248" height="1710" alt="hero" src="https://github.com/user-attachments/assets/e9c9db38-5d5d-4d21-bdc2-8f28641be14f" />
+
   - Add an image (https://fly.io) or abstract animation (https://render.com)
   - Title of the section
     - “Deploy Rust backends, not infrastructure”
@@ -103,14 +104,16 @@ Very likely just one page is enough to fit everything about kinetics in its curr
     - “Built for backend engineers”
       - “Supports any workload”
         - “Deploy REST API endpoints, queue workers, and cron jobs.”
-
-          ![](./deploy.mov)
+        
+        https://github.com/user-attachments/assets/5d0d6f7f-68a9-4f7b-8109-d0ce0c284d79
+        
           - “Only Rust code required”
             - “Just apply attribute macro to your function, and Kinetics will handle the rest. No other tools required.”
           - “Works offline”
             - “Run your functions locally, with no connection to the internet. Requests to DB and queues are served locally as well.”
-
-          ![](works-offline)
+            
+            https://github.com/user-attachments/assets/7e41a75b-2e4e-4fa4-9203-b50557b8a822
+            
           - “No infrastructure management”
             - “The infrastructure is always provisioned automatically.”
 
